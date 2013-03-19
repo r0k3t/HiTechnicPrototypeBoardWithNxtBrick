@@ -45,6 +45,19 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard
     }
 
     /// <summary>
+    /// Data returned from I2C read command
+    /// </summary>
+    [DataContract, Description("Data returned from I2C read command")]
+    public class ReadResponse
+    {
+        /// <summary>
+        /// byte array
+        /// </summary>
+        [DataMember, Description("byte array")]
+        public byte[] Bytes { get; set; }
+    }
+
+    /// <summary>
     /// HiTechnic prototype board State
     /// </summary>
     [DataContract, Description("Specifies the HiTechnic Prototype Board state.")]
@@ -121,10 +134,12 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard
     /// </summary>
     [DisplayName("ReadFromI2cAddress")]
     [Description("Read from a specified address on the board")]
-    public class ReadFromI2cAddress : Update<ReadConfig, PortSet<DefaultUpdateResponseType, Fault>>
+    public class ReadFromI2cAddress : Update<ReadConfig, PortSet<ReadResponse, Fault>>
     {
 
     }
+
+    
 
 
 

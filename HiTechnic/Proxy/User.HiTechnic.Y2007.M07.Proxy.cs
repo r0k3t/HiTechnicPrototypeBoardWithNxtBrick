@@ -464,6 +464,88 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy {
     }
     
     /// <summary>
+    ///            Data returned from I2C read command
+    ///            </summary>
+    [global::Microsoft.Dss.Core.Attributes.DataContractAttribute(Namespace="http://schemas.microsoft.com/robotics/2012/10/hitechnic/nxt/prototypeboard.user.h" +
+        "tml")]
+    [global::System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.microsoft.com/robotics/2012/10/hitechnic/nxt/prototypeboard.user.h" +
+        "tml", ElementName="ReadResponse")]
+    [global::System.ComponentModel.DescriptionAttribute("Data returned from I2C read command")]
+    public class ReadResponse : global::Microsoft.Dss.Core.IDssSerializable, global::System.ICloneable {
+        
+        public ReadResponse() {
+        }
+        
+        private byte[] _Bytes;
+        
+        /// <summary>
+        ///            byte array
+        ///            </summary>
+        [global::Microsoft.Dss.Core.Attributes.DataMemberAttribute(Order=-1)]
+        [global::System.ComponentModel.DescriptionAttribute("byte array")]
+        public byte[] Bytes {
+            get {
+                return this._Bytes;
+            }
+            set {
+                this._Bytes = value;
+            }
+        }
+        
+        /// <summary>
+        ///Copies the data member values of the current ReadResponse to the specified target object
+        ///</summary>
+        ///<param name="target">target object (must be an instance of)</param>
+        public virtual void CopyTo(Microsoft.Dss.Core.IDssSerializable target) {
+            global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse typedTarget = ((global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse)(target));
+            if ((this._Bytes != null)) {
+                int count = this._Bytes.Length;
+                byte[] tmp = new byte[count];
+                global::System.Buffer.BlockCopy(this._Bytes, 0, tmp, 0, global::System.Buffer.ByteLength(this._Bytes));
+                typedTarget._Bytes = tmp;
+            }
+        }
+        
+        /// <summary>
+        ///Clones ReadResponse
+        ///</summary>
+        ///<returns>cloned value</returns>
+        public virtual object Clone() {
+            global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse target0 = new global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse();
+            this.CopyTo(target0);
+            return target0;
+        }
+        
+        /// <summary>
+        ///Serializes the data member values of the current ReadResponse to the specified writer
+        ///</summary>
+        ///<param name="writer">the writer to which to serialize</param>
+        public virtual void Serialize(System.IO.BinaryWriter writer) {
+            if ((this._Bytes == null)) {
+                writer.Write(((byte)(0)));
+            }
+            else {
+                writer.Write(((byte)(1)));
+                writer.Write(this._Bytes.Length);
+                writer.Write(this._Bytes);
+            }
+        }
+        
+        /// <summary>
+        ///Deserializes ReadResponse
+        ///</summary>
+        ///<param name="reader">the reader from which to deserialize</param>
+        ///<returns>deserialized ReadResponse</returns>
+        public virtual object Deserialize(System.IO.BinaryReader reader) {
+            if ((reader.ReadByte() != 0)) {
+                int count0 = reader.ReadInt32();
+                this._Bytes = reader.ReadBytes(count0);
+            }
+            return this;
+        }
+    }
+    
+    /// <summary>
     ///            I2cReadResponse
     ///            </summary>
     [global::Microsoft.Dss.Core.Attributes.DataContractAttribute(Namespace="http://schemas.microsoft.com/robotics/2012/10/hitechnic/nxt/prototypeboard.user.h" +
@@ -712,7 +794,7 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy {
     [global::System.ComponentModel.DisplayNameAttribute("ReadFromI2cAddress")]
     [global::System.ComponentModel.DescriptionAttribute("Read from a specified address on the board")]
     [global::System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema=false)]
-    public class ReadFromI2cAddress : global::Microsoft.Dss.ServiceModel.Dssp.Update<global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig, global:: Microsoft.Ccr.Core.PortSet<global::Microsoft.Dss.ServiceModel.Dssp.DefaultUpdateResponseType, global:: W3C.Soap.Fault>> {
+    public class ReadFromI2cAddress : global::Microsoft.Dss.ServiceModel.Dssp.Update<global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig, global:: Microsoft.Ccr.Core.PortSet<global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse, global:: W3C.Soap.Fault>> {
         
         public ReadFromI2cAddress() {
         }
@@ -721,7 +803,7 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy {
                 base(body) {
         }
         
-        public ReadFromI2cAddress(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig body, global::Microsoft.Ccr.Core.PortSet<global::Microsoft.Dss.ServiceModel.Dssp.DefaultUpdateResponseType, global:: W3C.Soap.Fault> responsePort) : 
+        public ReadFromI2cAddress(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig body, global::Microsoft.Ccr.Core.PortSet<global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse, global:: W3C.Soap.Fault> responsePort) : 
                 base(body, responsePort) {
         }
     }
@@ -896,7 +978,7 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy {
             return operation.ResponsePort;
         }
         
-        public virtual global::Microsoft.Ccr.Core.PortSet<global::Microsoft.Dss.ServiceModel.Dssp.DefaultUpdateResponseType, global:: W3C.Soap.Fault> ReadFromI2cAddress() {
+        public virtual global::Microsoft.Ccr.Core.PortSet<global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse, global:: W3C.Soap.Fault> ReadFromI2cAddress() {
             global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig body = new global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig();
             global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadFromI2cAddress operation = new global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadFromI2cAddress(body);
             this.Post(operation);
@@ -910,7 +992,7 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy {
             return operation.ResponsePort;
         }
         
-        public virtual global::Microsoft.Ccr.Core.PortSet<global::Microsoft.Dss.ServiceModel.Dssp.DefaultUpdateResponseType, global:: W3C.Soap.Fault> ReadFromI2cAddress(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig body) {
+        public virtual global::Microsoft.Ccr.Core.PortSet<global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse, global:: W3C.Soap.Fault> ReadFromI2cAddress(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig body) {
             if ((body == null)) {
                 body = new global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig();
             }

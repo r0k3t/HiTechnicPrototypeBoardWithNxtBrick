@@ -145,7 +145,6 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard
         [ServiceHandler(ServiceHandlerBehavior.Exclusive)]
         public virtual IEnumerator<ITask> ReadFromI2cAddressHandler(ReadFromI2cAddress readRequest)
         {
-            Debugger.Break();
             var write = new LegoLSWrite
             {
                 Port = _state.SensorPort,
@@ -158,12 +157,11 @@ namespace Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard
                                     EmptyHandler,
                                     f => LogInfo(f.ToException().InnerException + " " + f.ToException().Message)));
 
-            Activate(Arbiter.Receive(false, TimeoutPort(500), EmptyHandler));
+            Activate(Arbiter.Receive(false, TimeoutPort(80), EmptyHandler));
 
             var read = new LegoLSRead(_state.SensorPort);
             Activate(Arbiter.Choice(_legoBrickPort.SendNxtCommand(read),
-                                    //r => readRequest.ResponsePort.Post(new I2cReadResponse { Response = r.CommandData }),
-                                    r => readRequest.ResponsePort.Post(new DefaultUpdateResponseType()),
+                                    r => readRequest.ResponsePort.Post(new ReadResponse {Bytes = r.CommandData}),
                                     f => readRequest.ResponsePort.Post(f)));
             yield break;
         }

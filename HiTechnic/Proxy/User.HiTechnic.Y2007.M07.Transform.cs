@@ -32,6 +32,8 @@ namespace Dss.Transforms.TransformUser {
             global::Microsoft.Dss.Core.Transforms.TransformBase.AddSourceTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.LedConfig), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_LedConfig_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_LedConfig));
             global::Microsoft.Dss.Core.Transforms.TransformBase.AddProxyTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadConfig), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_ReadConfig_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_ReadConfig));
             global::Microsoft.Dss.Core.Transforms.TransformBase.AddSourceTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.ReadConfig), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_ReadConfig_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_ReadConfig));
+            global::Microsoft.Dss.Core.Transforms.TransformBase.AddProxyTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_ReadResponse_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_ReadResponse));
+            global::Microsoft.Dss.Core.Transforms.TransformBase.AddSourceTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.ReadResponse), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_ReadResponse_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_ReadResponse));
             global::Microsoft.Dss.Core.Transforms.TransformBase.AddProxyTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.I2cReadResponse), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_I2cReadResponse_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_I2cReadResponse));
             global::Microsoft.Dss.Core.Transforms.TransformBase.AddSourceTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.I2cReadResponse), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_I2cReadResponse_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_I2cReadResponse));
             global::Microsoft.Dss.Core.Transforms.TransformBase.AddProxyTransform(typeof(global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.I2CReadHiTechnicPrototypeBoard), new global::Microsoft.Dss.Core.Attributes.Transform(Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_I2CReadHiTechnicPrototypeBoard_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_I2CReadHiTechnicPrototypeBoard));
@@ -139,6 +141,34 @@ namespace Dss.Transforms.TransformUser {
                 target.TxData = tmp0;
             }
             target.ExpectedResponseSize = from.ExpectedResponseSize;
+            return target;
+        }
+        
+        public static object Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_ReadResponse_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_ReadResponse(object transformFrom) {
+            global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.ReadResponse target = new global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.ReadResponse();
+            global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse from = ((global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse)(transformFrom));
+            if ((from.Bytes != null)) {
+                int count = from.Bytes.Length;
+                byte[] tmp = new byte[count];
+                global::System.Buffer.BlockCopy(from.Bytes, 0, tmp, 0, global::System.Buffer.ByteLength(from.Bytes));
+                target.Bytes = tmp;
+            }
+            else {
+                target.Bytes = null;
+            }
+            return target;
+        }
+        
+        public static object Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_ReadResponse_TO_Microsoft_Robotics_Services_Sample_HiTechnic_PrototypeBoard_Proxy_ReadResponse(object transformFrom) {
+            global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse target = new global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.Proxy.ReadResponse();
+            global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.ReadResponse from = ((global::Microsoft.Robotics.Services.Sample.HiTechnic.PrototypeBoard.ReadResponse)(transformFrom));
+            byte[] tmp = from.Bytes;
+            if ((tmp != null)) {
+                int count = tmp.Length;
+                byte[] tmp0 = new byte[count];
+                global::System.Buffer.BlockCopy(tmp, 0, tmp0, 0, global::System.Buffer.ByteLength(tmp));
+                target.Bytes = tmp0;
+            }
             return target;
         }
         

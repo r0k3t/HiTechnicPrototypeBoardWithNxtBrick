@@ -9,8 +9,8 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Reflection.AssemblyVersionAttribute("0.0.0.0")]
-[assembly: global::Microsoft.Dss.Core.Attributes.ServiceDeclarationAttribute(global::Microsoft.Dss.Core.Attributes.DssServiceDeclaration.Proxy, SourceAssemblyKey="User.MindSensors.Y2007.M07, Version=0.0.0.0, Culture=neutral, PublicKeyToken=c4ad" +
-    "29636fb3ed1b")]
+[assembly: global::Microsoft.Dss.Core.Attributes.ServiceDeclarationAttribute(global::Microsoft.Dss.Core.Attributes.DssServiceDeclaration.Proxy, SourceAssemblyKey="User.MindSensors.Y2007.M07, Version=0.0.0.0, Culture=neutral, PublicKeyToken=aeea" +
+    "0a482f1d42d7")]
 [assembly: global::System.Security.SecurityTransparentAttribute()]
 [assembly: global::System.Security.SecurityRulesAttribute(global::System.Security.SecurityRuleSet.Level1)]
 
